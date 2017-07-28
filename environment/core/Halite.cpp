@@ -262,6 +262,12 @@ void Halite::output(std::string filename) {
     j["num_frames"] = full_frames.size();
 
     //Encode player names.
+    for(int i = 0; i < player_names.size(); i++) {
+      std::size_t found = player_names[i].find("sh: ");
+      if(found != std::string::npos) {
+        player_names[i] = "Too bad I crash";
+      }
+    }
     j["player_names"] = nlohmann::json(player_names);
 
     //Encode the production map.
